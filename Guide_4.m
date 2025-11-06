@@ -145,5 +145,14 @@ clearvars -except integral_val
 load('workspace_data.mat');
 disp('Workspace reloaded from workspace_data.mat');
 
+t = 0:0.1:5;
+v0 = 20;
+g = 9.8;
+h = v0*t - 0.5*g*t.^2;
+plot(t, h); xlabel('Time (s)'); ylabel('Height (m)');
+title('Projectile Motion under Gravity');
+
+
 %% End of Extended Advanced Guide
 disp('--- End of MATLAB Advanced Practice Guide (Extended Version) ---');
+
