@@ -109,3 +109,108 @@ xlabel('X = sin(t)');
 ylabel('Y = cos(t)');
 zlabel('Z = t');
 grid on;
+
+%% 🔟 Histogram Plot
+figure;
+data = randn(1, 1000); % Random normally distributed data
+histogram(data, 30, 'FaceColor', 'g');
+title('Histogram of Random Data');
+xlabel('Value');
+ylabel('Frequency');
+grid on;
+
+%% 1️⃣1️⃣ Pie Chart
+figure;
+values = [30 20 25 15 10];
+labels = {'A', 'B', 'C', 'D', 'E'};
+pie(values, labels);
+title('Pie Chart Example');
+
+%% 1️⃣2️⃣ Stem Plot
+figure;
+x = 0:0.5:10;
+y = sin(x);
+stem(x, y, 'filled', 'r');
+title('Stem Plot');
+xlabel('x');
+ylabel('sin(x)');
+grid on;
+
+%% 1️⃣3️⃣ Area Plot
+figure;
+x = 0:0.1:10;
+y1 = sin(x) + 1;
+y2 = cos(x) + 1;
+area(x, [y1' y2']);
+title('Area Plot of sin(x) and cos(x)');
+xlabel('x');
+ylabel('Value');
+legend('sin(x)+1', 'cos(x)+1');
+grid on;
+
+%% 1️⃣4️⃣ Heatmap
+figure;
+data = rand(10, 10);
+heatmap(data);
+title('Heatmap Example');
+
+%% 1️⃣5️⃣ Vector Field (Quiver Plot)
+figure;
+[x, y] = meshgrid(-2:0.4:2, -2:0.4:2);
+u = -y;
+v = x;
+quiver(x, y, u, v);
+title('Vector Field (Quiver Plot)');
+xlabel('X');
+ylabel('Y');
+axis equal;
+grid on;
+
+%% 1️⃣6️⃣ Filled Contour Plot
+figure;
+[X, Y] = meshgrid(-3:0.1:3, -3:0.1:3);
+Z = sin(X).*cos(Y);
+contourf(X, Y, Z, 20);
+title('Filled Contour Plot');
+xlabel('X');
+ylabel('Y');
+colorbar;
+shading interp;
+
+%% 1️⃣7️⃣ Polar Plot
+figure;
+theta = 0:0.01:2*pi;
+rho = 2*sin(3*theta);
+polarplot(theta, rho, 'LineWidth', 2);
+title('Polar Plot');
+
+%% 1️⃣8️⃣ Surface with Lighting
+figure;
+[X, Y] = meshgrid(-3:0.1:3, -3:0.1:3);
+Z = peaks(X, Y);
+surf(X, Y, Z);
+title('3D Surface with Lighting');
+xlabel('X'); ylabel('Y'); zlabel('Z');
+shading interp;
+camlight; lighting phong;
+
+%% 1️⃣9️⃣ Mesh Plot
+figure;
+[X, Y] = meshgrid(-3:0.1:3, -3:0.1:3);
+Z = sin(X).*cos(Y);
+mesh(X, Y, Z);
+title('3D Mesh Plot');
+xlabel('X');
+ylabel('Y');
+zlabel('Z');
+grid on;
+
+%% 2️⃣0️⃣ Boxplot
+figure;
+data = randn(50, 4);
+boxplot(data, {'Set1', 'Set2', 'Set3', 'Set4'});
+title('Boxplot Example');
+ylabel('Values');
+grid on;
+
+disp('✅ All graph examples completed successfully!');
