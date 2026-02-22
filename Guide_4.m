@@ -152,6 +152,81 @@ h = v0*t - 0.5*g*t.^2;
 plot(t, h); xlabel('Time (s)'); ylabel('Height (m)');
 title('Projectile Motion under Gravity');
 
+%% 11. Polynomial Fitting and Curve Approximation
+disp('--- Polynomial Curve Fitting ---');
+
+xData = 0:1:10;
+yData = 3*xData.^2 + 2*xData + 5 + randn(size(xData))*10; % noisy quadratic data
+
+p = polyfit(xData, yData, 2);   % quadratic fit
+yFit = polyval(p, xData);
+
+figure;
+plot(xData, yData, 'bo'); hold on;
+plot(xData, yFit, 'r-', 'LineWidth', 2);
+legend('Noisy Data', 'Fitted Curve');
+title('Polynomial Curve Fitting');
+grid on;
+
+
+%% 12. Fast Fourier Transform (FFT)
+disp('--- FFT Analysis ---');
+
+Fs = 1000;                    % Sampling frequency
+tFFT = 0:1/Fs:1-1/Fs;
+signal = sin(2*pi*50*tFFT) + 0.5*sin(2*pi*120*tFFT);
+
+Y = fft(signal);
+P2 = abs(Y/length(signal));
+P1 = P2(1:length(signal)/2+1);
+P1(2:end-1) = 2*P1(2:end-1);
+f = Fs*(0:(length(signal)/2))/length(signal);
+
+figure;
+plot(f, P1);
+title('Single-Sided Amplitude Spectrum');
+xlabel('Frequency (Hz)');
+ylabel('|P1(f)|');
+grid on;
+
+
+%% 13. Optimization Using fminsearch
+disp('--- Function Optimization ---');
+
+objFun = @(x) (x-3).^2 + 4;
+x_min = fminsearch(objFun, 0);
+
+disp(['Minimum occurs at x = ', num2str(x_min)]);
+disp(['Minimum value = ', num2str(objFun(x_min))]);
+
+
+%% 14. Solving Nonlinear Equation using fzero
+disp('--- Solving Nonlinear Equation ---');
+
+nonlinearFun = @(x) x^3 - 5*x + 1;
+root = fzero(nonlinearFun, 0);
+
+disp(['Root of equation x^3 - 5x + 1 = 0 is: ', num2str(root)]);
+
+
+%% 15. Monte Carlo Simulation (Estimating Pi)
+disp('--- Monte Carlo Simulation for Pi ---');
+
+numPoints = 10000;
+xRand = rand(numPoints,1);
+yRand = rand(numPoints,1);
+
+insideCircle = (xRand.^2 + yRand.^2) <= 1;
+pi_estimate = 4 * sum(insideCircle) / numPoints;
+
+disp(['Estimated value of Pi: ', num2str(pi_estimate)]);
+
+figure;
+scatter(xRand(insideCircle), yRand(insideCircle), 'g'); hold on;
+scatter(xRand(~insideCircle), yRand(~insideCircle), 'r');
+title('Monte Carlo Estimation of Pi');
+axis equal;
+grid on;
 
 %% End of Extended Advanced Guide
 disp('--- End of MATLAB Advanced Practice Guide (Extended Version) ---');
