@@ -228,6 +228,96 @@ title('Monte Carlo Estimation of Pi');
 axis equal;
 grid on;
 
+%% 16. Singular Value Decomposition (SVD)
+disp('--- Singular Value Decomposition (SVD) ---');
+
+M = rand(4,3);
+[U, S, V] = svd(M);
+
+disp('Matrix M:');
+disp(M);
+disp('U matrix:');
+disp(U);
+disp('Singular Values (Diagonal of S):');
+disp(diag(S));
+disp('V matrix:');
+disp(V);
+
+
+%% 17. LU and QR Decomposition
+disp('--- LU and QR Decomposition ---');
+
+A2 = [4 -2 1; 20 -7 12; -8 13 17];
+
+[L, U_lu, P] = lu(A2);
+[Q, R] = qr(A2);
+
+disp('Matrix A2:');
+disp(A2);
+disp('L matrix (LU):');
+disp(L);
+disp('U matrix (LU):');
+disp(U_lu);
+disp('Permutation matrix P:');
+disp(P);
+disp('Q matrix (QR):');
+disp(Q);
+disp('R matrix (QR):');
+disp(R);
+
+
+%% 18. Interpolation Techniques
+disp('--- Interpolation ---');
+
+xInterp = 0:5;
+yInterp = [0 1 8 27 64 125];  % Cubic relation
+
+xq = 0:0.1:5;
+
+yLinear = interp1(xInterp, yInterp, xq, 'linear');
+ySpline = interp1(xInterp, yInterp, xq, 'spline');
+
+figure;
+plot(xInterp, yInterp, 'ro', 'MarkerSize', 8); hold on;
+plot(xq, yLinear, 'b--', 'LineWidth', 1.5);
+plot(xq, ySpline, 'k', 'LineWidth', 2);
+legend('Data Points', 'Linear Interpolation', 'Spline Interpolation');
+title('Interpolation Comparison');
+grid on;
+
+
+%% 19. Image Processing Basics
+disp('--- Basic Image Processing ---');
+
+img = peaks(200);  % Generate sample data
+imgNorm = mat2gray(img);
+
+figure;
+imshow(imgNorm);
+title('Generated Image (Normalized Peaks)');
+
+% Edge detection
+edges = edge(imgNorm, 'sobel');
+
+figure;
+imshow(edges);
+title('Edge Detection using Sobel');
+
+
+%% 20. Animation Example
+disp('--- Simple Animation ---');
+
+figure;
+for k = 1:100
+    yAnim = sin(x + 0.1*k);
+    plot(x, yAnim, 'b', 'LineWidth', 2);
+    axis([0 10 -1.5 1.5]);
+    title('Animating Sine Wave');
+    xlabel('X'); ylabel('sin(x)');
+    grid on;
+    drawnow;
+end
+
 %% End of Extended Advanced Guide
 disp('--- End of MATLAB Advanced Practice Guide (Extended Version) ---');
 
