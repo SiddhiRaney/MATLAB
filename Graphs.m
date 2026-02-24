@@ -214,3 +214,108 @@ ylabel('Values');
 grid on;
 
 disp('✅ All graph examples completed successfully!');
+
+%% 2️⃣1️⃣ Logarithmic Plot (Semilog-Y)
+figure;
+x = 0:0.1:10;
+y = exp(x/3);
+semilogy(x, y, 'LineWidth', 2);
+title('Semilog-Y Plot');
+xlabel('x');
+ylabel('exp(x/3)');
+grid on;
+
+%% 2️⃣2️⃣ Log-Log Plot
+figure;
+x = 1:0.1:10;
+y = x.^2;
+loglog(x, y, 'LineWidth', 2);
+title('Log-Log Plot');
+xlabel('x');
+ylabel('x^2');
+grid on;
+
+%% 2️⃣3️⃣ Error Bar Plot
+figure;
+x = 1:5;
+y = [5 7 6 8 7];
+err = [0.5 0.3 0.4 0.2 0.6];
+errorbar(x, y, err, 'LineWidth', 2);
+title('Error Bar Plot');
+xlabel('X');
+ylabel('Y');
+grid on;
+
+%% 2️⃣4️⃣ Stacked Bar Graph
+figure;
+data = randi([1 10], 5, 3);
+bar(data, 'stacked');
+title('Stacked Bar Graph');
+xlabel('Category');
+ylabel('Value');
+grid on;
+
+%% 2️⃣5️⃣ Horizontal Bar Graph
+figure;
+data = [4 7 1 9 3];
+barh(data);
+title('Horizontal Bar Graph');
+xlabel('Value');
+ylabel('Category');
+grid on;
+
+%% 2️⃣6️⃣ Filled Area Between Curves
+figure;
+x = 0:0.1:10;
+y1 = sin(x);
+y2 = cos(x);
+fill([x fliplr(x)], [y1 fliplr(y2)], 'c');
+title('Filled Area Between sin(x) and cos(x)');
+xlabel('x');
+ylabel('Value');
+grid on;
+
+%% 2️⃣7️⃣ Waterfall Plot
+figure;
+[X, Y] = meshgrid(-3:0.2:3);
+Z = sin(X).*cos(Y);
+waterfall(X, Y, Z);
+title('Waterfall Plot');
+xlabel('X');
+ylabel('Y');
+zlabel('Z');
+grid on;
+
+%% 2️⃣8️⃣ Pareto Chart
+figure;
+data = randi([1 20], 1, 6);
+pareto(data);
+title('Pareto Chart');
+
+%% 2️⃣9️⃣ Bubble Chart
+figure;
+x = rand(1,20);
+y = rand(1,20);
+sizes = rand(1,20) * 500;
+bubblechart(x, y, sizes);
+title('Bubble Chart');
+xlabel('X');
+ylabel('Y');
+grid on;
+
+%% 3️⃣0️⃣ Animated Moving Point
+figure;
+x = 0:0.1:2*pi;
+y = sin(x);
+for i = 1:length(x)
+    plot(x, y, 'b'); hold on;
+    plot(x(i), y(i), 'ro', 'MarkerSize', 8, 'MarkerFaceColor', 'r');
+    hold off;
+    title('Moving Point on Sine Curve');
+    xlabel('x');
+    ylabel('sin(x)');
+    grid on;
+    pause(0.05);
+end
+
+disp(' All 30 graph examples completed successfully!');
