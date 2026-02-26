@@ -85,5 +85,59 @@ ylabel('y-axis');
 title('Sine Wave');
 grid on;
 
+%% SECTION 11: MATRIX CREATION AND OPERATIONS
+A = [1 2; 3 4];     % 2x2 matrix
+B = [5 6; 7 8];
+
+mat_add = A + B;    % Matrix addition
+mat_mul = A * B;    % Matrix multiplication
+transpose_A = A';   % Transpose
+
+disp('Matrix Operations:');
+disp('Matrix Addition:');
+disp(mat_add);
+disp('Matrix Multiplication:');
+disp(mat_mul);
+disp('Transpose of A:');
+disp(transpose_A);
+
+%% SECTION 12: USER INPUT
+num = input('Enter a number: ');
+disp(['You entered: ', num2str(num)]);
+
+%% SECTION 13: VECTOR OPERATIONS
+v = 1:5;                 % Row vector
+sq = v.^2;               % Element-wise square
+sum_v = sum(v);          % Sum of elements
+mean_v = mean(v);        % Mean value
+
+disp('Vector Operations:');
+disp(['Vector: ', num2str(v)]);
+disp(['Squared: ', num2str(sq)]);
+disp(['Sum: ', num2str(sum_v)]);
+disp(['Mean: ', num2str(mean_v)]);
+
+%% SECTION 14: SWITCH CASE
+day = 3;
+switch day
+    case 1
+        disp('Monday');
+    case 2
+        disp('Tuesday');
+    case 3
+        disp('Wednesday');
+    otherwise
+        disp('Invalid Day');
+end
+
+%% SECTION 15: BAR GRAPH
+data = [5 10 15 20];
+figure;
+bar(data);
+xlabel('Index');
+ylabel('Value');
+title('Bar Graph Example');
+grid on;
+
 %% End of Guide
 disp('--- End of MATLAB Beginner Guide ---');
