@@ -58,5 +58,83 @@ grid on;
 %% 5. Simple GUI Preview using App Designer (Manual Task)
 disp('For GUI: Open MATLAB App Designer to build buttons, sliders, and interactive plots.');
 
+%% 6. Matrix Operations and Eigenvalues
+A = [4 2; 1 3];
+disp('Matrix A:');
+disp(A);
+
+detA = det(A);
+invA = inv(A);
+[eVec, eVal] = eig(A);
+
+disp(['Determinant of A: ', num2str(detA)]);
+disp('Inverse of A:');
+disp(invA);
+disp('Eigenvalues of A:');
+disp(diag(eVal));
+
+%% 7. Symbolic Math Toolbox Usage
+syms x_sym
+f = x_sym^3 - 6*x_sym^2 + 11*x_sym - 6;
+
+df = diff(f);              % First derivative
+intf = int(f);             % Indefinite integral
+roots_f = solve(f == 0);   % Solving equation
+
+disp('Symbolic Function:');
+disp(f);
+disp('Derivative:');
+disp(df);
+disp('Integral:');
+disp(intf);
+disp('Roots:');
+disp(roots_f);
+
+%% 8. 3D Plotting
+[X, Y] = meshgrid(-5:0.5:5);
+Z = sin(sqrt(X.^2 + Y.^2));
+
+figure;
+surf(X, Y, Z);
+xlabel('X');
+ylabel('Y');
+zlabel('Z');
+title('3D Surface Plot');
+shading interp;
+colorbar;
+
+%% 9. Data Visualization with Subplots
+t = 0:0.1:2*pi;
+
+figure;
+subplot(2,2,1);
+plot(t, sin(t)); title('sin(t)');
+
+subplot(2,2,2);
+plot(t, cos(t)); title('cos(t)');
+
+subplot(2,2,3);
+plot(t, tan(t)); title('tan(t)');
+
+subplot(2,2,4);
+plot(t, sin(t).*cos(t)); title('sin(t)cos(t)');
+
+%% 10. Performance Measurement using tic-toc
+disp('Performance Comparison');
+
+tic;
+sum_loop = 0;
+for i = 1:1000000
+    sum_loop = sum_loop + i;
+end
+loop_time = toc;
+
+tic;
+sum_vec = sum(1:1000000);
+vec_time = toc;
+
+disp(['Loop Time: ', num2str(loop_time)]);
+disp(['Vectorized Time: ', num2str(vec_time)]);
+
 %% End of Advanced Guide
 disp('--- End of MATLAB Advanced Practice Guide ---');
