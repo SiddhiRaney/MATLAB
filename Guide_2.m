@@ -68,3 +68,52 @@ function f = factorial_calc(n)
         f = f * i;
     end
 end
+
+%% 6. If-Else Example
+disp('--- If-Else Example ---');
+num = 7;
+
+if mod(num,2) == 0
+    disp([num2str(num), ' is Even']);
+else
+    disp([num2str(num), ' is Odd']);
+end
+
+
+%% 7. While Loop Example
+disp('--- While Loop Example ---');
+count = 1;
+while count <= 5
+    disp(['Count is: ', num2str(count)]);
+    count = count + 1;
+end
+
+
+%% 8. Vector Operations
+disp('--- Vector Operations ---');
+v = [1 2 3 4 5];
+
+squareV = v.^2;   % Element-wise square
+disp('Squares of vector elements:');
+disp(squareV);
+
+sumV = sum(v);
+disp(['Sum of vector elements: ', num2str(sumV)]);
+
+
+%% 9. User Input Example
+disp('--- User Input Example ---');
+userNum = input('Enter a number: ');
+disp(['You entered: ', num2str(userNum)]);
+disp(['Square of the number is: ', num2str(userNum^2)]);
+
+
+%% 10. Finding Maximum and Minimum
+disp('--- Max and Min Example ---');
+array = [12 45 7 89 23 56];
+
+maximumValue = max(array);
+minimumValue = min(array);
+
+disp(['Maximum value: ', num2str(maximumValue)]);
+disp(['Minimum value: ', num2str(minimumValue)]);
