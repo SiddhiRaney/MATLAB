@@ -318,6 +318,81 @@ for k = 1:100
     drawnow;
 end
 
-%% End of Extended Advanced Guide
-disp('--- End of MATLAB Advanced Practice Guide (Extended Version) ---');
+%% 21. Principal Component Analysis (PCA)
+disp('--- Principal Component Analysis (PCA) ---');
+
+dataPCA = rand(100,5);      % Random dataset (100 samples, 5 features)
+[coeff, score, latent] = pca(dataPCA);
+
+disp('Principal Component Coefficients:');
+disp(coeff);
+disp('Explained Variance (Eigenvalues):');
+disp(latent);
+
+figure;
+pareto(latent);
+title('PCA - Variance Explained');
+grid on;
+
+
+%% 22. K-Means Clustering
+disp('--- K-Means Clustering ---');
+
+dataCluster = [randn(100,2)+2; randn(100,2)-2; randn(100,2)+[2 -2]];
+[idx, centroids] = kmeans(dataCluster, 3);
+
+figure;
+gscatter(dataCluster(:,1), dataCluster(:,2), idx);
+hold on;
+plot(centroids(:,1), centroids(:,2), 'kx', 'LineWidth', 3, 'MarkerSize', 12);
+title('K-Means Clustering');
+grid on;
+
+
+%% 23. Control System Example (Transfer Function)
+disp('--- Control System Transfer Function ---');
+
+num = [1];
+den = [1 3 2];      % s^2 + 3s + 2
+sys = tf(num, den);
+
+disp('Transfer Function:');
+sys
+
+figure;
+step(sys);
+title('Step Response of Transfer Function');
+grid on;
+
+
+%% 24. Linear Programming Optimization
+disp('--- Linear Programming ---');
+
+f_obj = [-3 -5];    % Maximize 3x + 5y → minimize -3x -5y
+A_lp = [1 0; 0 2; 3 2];
+b_lp = [4; 12; 18];
+
+[x_opt, fval] = linprog(f_obj, A_lp, b_lp);
+
+disp('Optimal Variables:');
+disp(x_opt);
+disp(['Maximum Value: ', num2str(-fval)]);
+
+
+%% 25. Parallel Computing Example
+disp('--- Parallel Computing Example ---');
+
+parpool('local');   % Start parallel pool
+
+parfor i = 1:10
+    results(i) = sum(rand(1,1000000));
+end
+
+delete(gcp('nocreate'));   % Shut down pool
+
+disp('Parallel Computation Results:');
+disp(results);
+
+
+
 
