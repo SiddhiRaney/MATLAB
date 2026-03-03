@@ -318,4 +318,111 @@ for i = 1:length(x)
     pause(0.05);
 end
 
-disp(' All 30 graph examples completed successfully!');
+%% 3️⃣1️⃣ Histogram with Probability Normalization
+figure;
+data = randn(1,1000);
+histogram(data, 'Normalization', 'probability');
+title('Normalized Histogram');
+xlabel('Value');
+ylabel('Probability');
+grid on;
+
+%% 3️⃣2️⃣ Dual Y-Axis Plot
+figure;
+x = 0:0.1:10;
+y1 = sin(x);
+y2 = exp(x/5);
+yyaxis left
+plot(x, y1, 'LineWidth', 2);
+ylabel('sin(x)');
+yyaxis right
+plot(x, y2, 'LineWidth', 2);
+ylabel('exp(x/5)');
+title('Dual Y-Axis Plot');
+xlabel('x');
+grid on;
+
+%% 3️⃣3️⃣ Stair Plot
+figure;
+x = 0:1:10;
+y = randi([1 10],1,11);
+stairs(x, y, 'LineWidth', 2);
+title('Stair Plot');
+xlabel('x');
+ylabel('Value');
+grid on;
+
+%% 3️⃣4️⃣ Compass Plot
+figure;
+theta = linspace(0, 2*pi, 10);
+u = cos(theta);
+v = sin(theta);
+compass(u, v);
+title('Compass Plot');
+
+%% 3️⃣5️⃣ Ribbon Plot
+figure;
+[X,Y] = meshgrid(-3:0.2:3);
+Z = sin(X).*cos(Y);
+ribbon(Z);
+title('Ribbon Plot');
+grid on;
+
+%% 3️⃣6️⃣ Animated Growing Circle
+figure;
+theta = linspace(0,2*pi,200);
+for r = 0:0.1:5
+    x = r*cos(theta);
+    y = r*sin(theta);
+    plot(x,y,'LineWidth',2);
+    axis equal;
+    axis([-6 6 -6 6]);
+    title('Growing Circle Animation');
+    grid on;
+    pause(0.05);
+end
+
+%% 3️⃣7️⃣ Filled 3D Surface with Edge Removal
+figure;
+[X,Y] = meshgrid(-2:0.1:2);
+Z = X.*exp(-X.^2 - Y.^2);
+surf(X,Y,Z,'EdgeColor','none');
+title('Smooth Surface Plot');
+xlabel('X');
+ylabel('Y');
+zlabel('Z');
+colorbar;
+grid on;
+
+%% 3️⃣8️⃣ Polar Scatter Plot
+figure;
+theta = 2*pi*rand(1,100);
+rho = rand(1,100);
+polarscatter(theta,rho,'filled');
+title('Polar Scatter Plot');
+
+%% 3️⃣9️⃣ Time Series Plot with Datetime
+figure;
+t = datetime(2024,1,1) + days(0:9);
+y = rand(1,10);
+plot(t,y,'LineWidth',2);
+title('Time Series Plot');
+xlabel('Date');
+ylabel('Value');
+grid on;
+
+%% 4️⃣0️⃣ Custom Colormap Surface Plot
+figure;
+[X,Y] = meshgrid(-3:0.1:3);
+Z = peaks(X,Y);
+surf(X,Y,Z);
+colormap(jet);
+colorbar;
+title('Surface Plot with Custom Colormap');
+xlabel('X');
+ylabel('Y');
+zlabel('Z');
+shading interp;
+grid on;
+
+
