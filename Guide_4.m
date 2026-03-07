@@ -394,5 +394,86 @@ disp('Parallel Computation Results:');
 disp(results);
 
 
+%% 26. Gradient and Contour Plot Visualization
+disp('--- Gradient and Contour Plot ---');
+
+[xC, yC] = meshgrid(-2:0.1:2, -2:0.1:2);
+zC = xC.^2 + yC.^2;
+
+figure;
+contour(xC, yC, zC, 20);
+colorbar;
+title('Contour Plot of z = x^2 + y^2');
+xlabel('X'); ylabel('Y');
+grid on;
+
+[px, py] = gradient(zC);
+
+figure;
+quiver(xC, yC, px, py);
+title('Gradient Vector Field');
+xlabel('X'); ylabel('Y');
+grid on;
+
+
+%% 27. Solving System of Linear Equations
+disp('--- Solving Linear System ---');
+
+A_sys = [3 -1 2; 2 4 0; -1 2 5];
+b_sys = [10; 8; 7];
+
+x_sol = A_sys\b_sys;
+
+disp('Coefficient Matrix A:');
+disp(A_sys);
+disp('Solution Vector x:');
+disp(x_sol);
+
+
+%% 28. Logistic Growth Model Simulation
+disp('--- Logistic Population Growth ---');
+
+r = 0.5;      % Growth rate
+K = 100;      % Carrying capacity
+P0 = 5;       % Initial population
+
+tPop = 0:0.1:20;
+P = K ./ (1 + ((K-P0)/P0) * exp(-r*tPop));
+
+figure;
+plot(tPop, P, 'LineWidth', 2);
+title('Logistic Growth Model');
+xlabel('Time');
+ylabel('Population');
+grid on;
+
+
+%% 29. Heatmap Visualization
+disp('--- Heatmap Visualization ---');
+
+dataHeat = rand(20);
+
+figure;
+imagesc(dataHeat);
+colorbar;
+title('Heatmap Representation');
+xlabel('Column Index');
+ylabel('Row Index');
+
+
+%% 30. Random Walk Simulation
+disp('--- Random Walk Simulation ---');
+
+steps = 1000;
+xWalk = cumsum(randn(steps,1));
+yWalk = cumsum(randn(steps,1));
+
+figure;
+plot(xWalk, yWalk, 'LineWidth', 1.5);
+title('2D Random Walk Simulation');
+xlabel('X Position');
+ylabel('Y Position');
+grid on;
+axis equal;
 
 
