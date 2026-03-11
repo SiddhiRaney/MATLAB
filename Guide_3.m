@@ -136,5 +136,90 @@ vec_time = toc;
 disp(['Loop Time: ', num2str(loop_time)]);
 disp(['Vectorized Time: ', num2str(vec_time)]);
 
+%% 11. Polynomial Curve Fitting
+x_data = [1 2 3 4 5];
+y_data = [2.2 2.8 3.6 4.5 5.1];
+
+p = polyfit(x_data, y_data, 2);   % quadratic fit
+y_fit = polyval(p, x_data);
+
+figure;
+plot(x_data, y_data, 'ro', 'MarkerSize',8); hold on;
+plot(x_data, y_fit, 'b-', 'LineWidth',2);
+title('Polynomial Curve Fitting');
+legend('Original Data','Fitted Curve');
+grid on;
+
+%% 12. Random Number Generation and Histogram
+rand_data = randn(1,1000);
+
+figure;
+histogram(rand_data,30);
+title('Histogram of Random Data');
+xlabel('Value');
+ylabel('Frequency');
+
+%% 13. Image Processing Example
+img = imread('peppers.png');
+gray_img = rgb2gray(img);
+
+figure;
+subplot(1,2,1); imshow(img); title('Original Image');
+subplot(1,2,2); imshow(gray_img); title('Grayscale Image');
+
+%% 14. Numerical Integration
+f = @(x) x.^2 .* exp(-x);
+result = integral(f,0,5);
+
+disp(['Numerical integration result: ', num2str(result)]);
+
+%% 15. Root Finding using fzero
+func = @(x) x^3 - x - 2;
+root = fzero(func,1);
+
+disp(['Root of equation: ', num2str(root)]);
+
+%% 16. Interpolation
+x_points = 0:5;
+y_points = [0 1 4 9 16 25];
+
+xq = 0:0.1:5;
+yq = interp1(x_points,y_points,xq,'spline');
+
+figure;
+plot(x_points,y_points,'ro',xq,yq,'b-');
+title('Interpolation Example');
+legend('Data Points','Interpolated Curve');
+grid on;
+
+%% 17. Logical Indexing
+A = randi([1 20],5,5);
+disp('Matrix A:');
+disp(A);
+
+filtered = A(A > 10);
+disp('Elements greater than 10:');
+disp(filtered);
+
+%% 18. Sparse Matrices
+S = sparse([1 3 5],[2 4 1],[10 20 30],5,5);
+
+disp('Sparse Matrix:');
+disp(S);
+
+%% 19. Parallel Computing Example
+parfor i = 1:5
+    disp(['Parallel iteration ', num2str(i)]);
+end
+
+%% 20. Exporting a Figure
+figure;
+plot(sin(0:0.1:10));
+title('Export Example');
+
+saveas(gcf,'sine_plot.png');
+
+disp('Figure saved as sine_plot.png');
+
 %% End of Advanced Guide
 disp('--- End of MATLAB Advanced Practice Guide ---');
