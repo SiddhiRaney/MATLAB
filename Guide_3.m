@@ -221,5 +221,104 @@ saveas(gcf,'sine_plot.png');
 
 disp('Figure saved as sine_plot.png');
 
+%% 21. Fast Fourier Transform (FFT) for Signal Analysis
+fs = 1000;                % Sampling frequency
+t = 0:1/fs:1;             % Time vector
+signal = sin(2*pi*50*t) + sin(2*pi*120*t);  % Mixed signal
+
+Y = fft(signal);
+n = length(signal);
+f = (0:n-1)*(fs/n);
+
+figure;
+plot(f, abs(Y));
+title('FFT Spectrum');
+xlabel('Frequency (Hz)');
+ylabel('Magnitude');
+xlim([0 200]);
+
+%% 22. Monte Carlo Simulation (Estimating Pi)
+N = 100000;
+x_rand = rand(N,1);
+y_rand = rand(N,1);
+
+inside = (x_rand.^2 + y_rand.^2) <= 1;
+pi_est = 4 * sum(inside) / N;
+
+disp(['Estimated value of pi: ', num2str(pi_est)]);
+
+%% 23. Animation Example
+t = 0:0.1:10;
+
+figure;
+for i = 1:length(t)
+    plot(sin(t(1:i)));
+    axis([0 length(t) -1 1]);
+    title('Animating sin wave');
+    drawnow;
+end
+
+%% 24. Solving Linear System
+A = [3 -1 2; 2 4 0; -1 2 5];
+b = [10; 12; 7];
+
+x_sol = A\b;
+
+disp('Solution of linear system Ax=b:');
+disp(x_sol);
+
+%% 25. Data Table Example
+Names = {'Alice';'Bob';'Charlie'};
+Scores = [85;90;78];
+T = table(Names,Scores);
+
+disp('Student Table:');
+disp(T);
+
+%% 26. Data Smoothing
+t = 0:0.1:10;
+data = sin(t) + 0.3*randn(size(t));
+
+smooth_data = smoothdata(data,'movmean',5);
+
+figure;
+plot(t,data,'r'); hold on;
+plot(t,smooth_data,'b','LineWidth',2);
+legend('Noisy Data','Smoothed Data');
+title('Data Smoothing Example');
+
+%% 27. Contour Plot
+[X,Y] = meshgrid(-3:0.1:3);
+Z = X.^2 + Y.^2;
+
+figure;
+contour(X,Y,Z,20);
+title('Contour Plot');
+xlabel('X');
+ylabel('Y');
+
+%% 28. Bar Graph Visualization
+categories = {'A','B','C','D'};
+values = [10 25 18 30];
+
+figure;
+bar(values);
+set(gca,'XTickLabel',categories);
+title('Bar Graph Example');
+ylabel('Values');
+
+%% 29. Heatmap Visualization
+data_matrix = rand(5,5);
+
+figure;
+heatmap(data_matrix);
+title('Heatmap Example');
+
+%% 30. Saving Workspace Data
+save('workspace_data.mat');
+
+disp('Workspace variables saved to workspace_data.mat');
+
+
 %% End of Advanced Guide
 disp('--- End of MATLAB Advanced Practice Guide ---');
