@@ -319,6 +319,71 @@ save('workspace_data.mat');
 
 disp('Workspace variables saved to workspace_data.mat');
 
+%% 31. Handling Large Data with Tall Arrays
+% Used when data is too large to fit in memory
+data_folder = 'large_data_sim'; % Placeholder for a folder of CSVs
+% t_data = tall(datastore('*.csv')); 
+% summary_data = gather(mean(t_data)); 
+disp('Tall Arrays: Use "tall" and "gather" for datasets exceeding RAM.');
+
+%% 32. Global Optimization using Genetic Algorithm
+% Finding the minimum of the Rosenbrock function
+fitnessFunction = @(x) 100*(x(2) - x(1)^2)^2 + (1 - x(1))^2;
+[x_opt, fval] = ga(fitnessFunction, 2); 
+disp(['GA Optimal Solution: ', num2str(x_opt)]);
+
+%% 33. Design of Experiments (DOE) - Full Factorial
+% Create a 3-factor, 2-level design
+design = fullfact([2 2 2]);
+disp('Full Factorial Design Matrix (3 Factors, 2 Levels):');
+disp(design);
+
+%% 34. Signal Filtering (Butterworth Filter)
+fs = 1000; t = 0:1/fs:1;
+noisy_sig = sin(2*pi*50*t) + 0.5*randn(size(t));
+[b, a] = butter(6, 0.1); % Low-pass filter
+clean_sig = filter(b, a, noisy_sig);
+figure; plot(t, noisy_sig, 'Color', [0.7 0.7 0.7]); hold on;
+plot(t, clean_sig, 'b', 'LineWidth', 2);
+title('Butterworth Low-pass Filter');
+
+%% 35. Object-Oriented Programming (Class Definition)
+% Note: In MATLAB, this usually goes in a separate .m file
+% classdef SimpleCircle
+%    properties; Radius; end
+%    methods; function a = getArea(obj); a = pi * obj.Radius^2; end; end
+% end
+disp('OOP: Defined classes using "classdef" for scalable applications.');
+
+%% 36. Working with Datetimes and Durations
+t1 = datetime('now');
+t2 = t1 + hours(5) + minutes(30);
+diff_time = t2 - t1;
+disp(['Elapsed Time: ', char(diff_time)]);
+
+%% 37. Supervised Learning: Simple Linear Regression
+x = (1:10)'; y = 2*x + randn(10,1);
+mdl = fitlm(x, y); % Fit linear model
+disp('Linear Regression Model Summary:');
+disp(mdl.Coefficients);
+
+%% 38. Map Containers (Key-Value Pairs)
+mapObj = containers.Map({'Status200', 'Status404'}, {'OK', 'Not Found'});
+disp(['Key Search: ', mapObj('Status404')]);
+
+%% 39. Creating a Custom Toolbox/Function Documentation
+% Use help text (comments at the start) to make functions searchable
+% help your_function_name
+disp('Documentation: Use "%%" and "%" to create searchable help headers.');
+
+%% 40. Deployment and Versioning
+% Using 'projects' to manage dependencies
+% ver; % Displays version info for all installed toolboxes
+disp('Deployment: Use "mcc" (MATLAB Compiler) to create standalone executables.');
+
+%% Final Wrap-up
+disp('--- End of Extended MATLAB Advanced Practice Guide (1-40) ---');
+
 
 %% End of Advanced Guide
 disp('--- End of MATLAB Advanced Practice Guide ---');
