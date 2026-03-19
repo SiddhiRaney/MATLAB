@@ -426,3 +426,114 @@ shading interp;
 grid on;
 
 
+%% 4️⃣1️⃣ 3D Scatter Plot
+figure;
+x = rand(1,100);
+y = rand(1,100);
+z = rand(1,100);
+scatter3(x,y,z,'filled');
+title('3D Scatter Plot');
+xlabel('X'); ylabel('Y'); zlabel('Z');
+grid on;
+
+%% 4️⃣2️⃣ Step Response Style Plot
+figure;
+t = 0:0.1:10;
+y = ones(size(t));
+y(t<5) = 0;
+plot(t,y,'LineWidth',2);
+title('Step Function Plot');
+xlabel('Time');
+ylabel('Amplitude');
+grid on;
+
+%% 4️⃣3️⃣ Frequency Spectrum (FFT)
+figure;
+fs = 1000;
+t = 0:1/fs:1;
+signal = sin(2*pi*50*t) + sin(2*pi*120*t);
+Y = abs(fft(signal));
+f = linspace(0,fs,length(Y));
+plot(f,Y);
+title('Frequency Spectrum');
+xlabel('Frequency (Hz)');
+ylabel('Magnitude');
+grid on;
+
+%% 4️⃣4️⃣ Lissajous Curve
+figure;
+t = linspace(0,2*pi,1000);
+x = sin(3*t);
+y = sin(4*t);
+plot(x,y,'LineWidth',2);
+title('Lissajous Curve');
+xlabel('X'); ylabel('Y');
+axis equal;
+grid on;
+
+%% 4️⃣5️⃣ Filled Polygon Plot
+figure;
+x = [1 3 5 4 2];
+y = [2 5 3 1 1];
+fill(x,y,'y');
+title('Filled Polygon');
+xlabel('X'); ylabel('Y');
+grid on;
+
+%% 4️⃣6️⃣ Moving Sine Wave Animation
+figure;
+x = 0:0.1:10;
+for k = 1:50
+    y = sin(x - k*0.2);
+    plot(x,y,'LineWidth',2);
+    axis([0 10 -1.5 1.5]);
+    title('Moving Sine Wave');
+    grid on;
+    pause(0.05);
+end
+
+%% 4️⃣7️⃣ Gaussian Curve Plot
+figure;
+x = -5:0.1:5;
+y = exp(-x.^2);
+plot(x,y,'LineWidth',2);
+title('Gaussian Curve');
+xlabel('x'); ylabel('e^{-x^2}');
+grid on;
+
+%% 4️⃣8️⃣ Cumulative Sum Plot
+figure;
+data = rand(1,50);
+cs = cumsum(data);
+plot(cs,'LineWidth',2);
+title('Cumulative Sum Plot');
+xlabel('Index');
+ylabel('Cumulative Value');
+grid on;
+
+%% 4️⃣9️⃣ Spiral Plot
+figure;
+theta = linspace(0,10*pi,1000);
+r = theta;
+x = r .* cos(theta);
+y = r .* sin(theta);
+plot(x,y,'LineWidth',2);
+title('Spiral Plot');
+axis equal;
+grid on;
+
+%% 5️⃣0️⃣ Animated Bouncing Ball
+figure;
+x = 0:0.1:10;
+y = abs(sin(x));
+for i = 1:length(x)
+    plot(x,y,'b'); hold on;
+    plot(x(i), y(i), 'ro', 'MarkerFaceColor','r');
+    hold off;
+    axis([0 10 0 1.5]);
+    title('Bouncing Ball Animation');
+    grid on;
+    pause(0.05);
+end
+
+disp('🎯 Completed 50 MATLAB Graph Examples!');
